@@ -1,5 +1,5 @@
 import React from 'react';
-import RootStackNavigation from 'src/routes/RootStackNavigation';
+import RootStackNavigation from './src/routes/RootStackNavigation';
 
 const App = () => {
 

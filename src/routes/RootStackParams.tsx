@@ -1,3 +1,5 @@
 export type RootStackParams = {
-    HomePage: undefined;
+    TabScreen: undefined;
+    FavoriteNews: undefined;
+    HotNews: undefined;
 }
