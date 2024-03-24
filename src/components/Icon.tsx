@@ -11,10 +11,7 @@ import Foundation from 'react-native-vector-icons/Foundation';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
-import Octicons from 'react-native-vector-icons/Octicons';
 import React from 'react';
-import SimpleLineIcons from 'react-native-vector-icons/SimpleLineIcons';
-import Zocial from 'react-native-vector-icons/Zocial';
 
 interface props extends ViewProps {
   type:
@@ -79,15 +76,6 @@ const Icon = ({
       break;
     case 'MaterialIcons':
       Family = MaterialIcons;
-      break;
-    case 'Octicons':
-      Family = Octicons;
-      break;
-    case 'SimpleLineIcons':
-      Family = SimpleLineIcons;
-      break;
-    case 'Zocial':
-      Family = Zocial;
       break;
     default:
       Family = Ionicons;

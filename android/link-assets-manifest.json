@@ -1,0 +1,33 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/NotoSerifKR-Black.otf",
+      "sha1": "9702fbc1882fc014d5371e91e601d5e199c358cc"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifKR-Bold.otf",
+      "sha1": "83eade8dead56d7da1da7acb515a0d85f6a4be15"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifKR-ExtraLight.otf",
+      "sha1": "b57ea511b4be7d120149c6494fbde2d1a4fe6e38"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifKR-Light.otf",
+      "sha1": "0a6ea26cc631c10b5818ce91d044cf5a198a4d45"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifKR-Medium.otf",
+      "sha1": "9bc797ad5b85eb3e6fb628d38ee183841ed5dd08"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifKR-Regular.otf",
+      "sha1": "73ce90530c603a57bd43525420a7e52ef2e1a00d"
+    },
+    {
+      "path": "src/assets/fonts/NotoSerifKR-SemiBold.otf",
+      "sha1": "28784de5b0d8b9f59f4ecb06542a9eb30666df16"
+    }
+  ]
+}

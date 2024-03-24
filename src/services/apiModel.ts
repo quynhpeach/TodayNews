@@ -1,7 +1,7 @@
 export interface ResponseAPIResult {
     status: string;
     totalResults: number;
-    articles: [];
+    articles: Articles[];
   }
   
   export interface Articles {

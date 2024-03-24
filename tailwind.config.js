@@ -7,6 +7,15 @@ module.exports = {
     extend: {
       colors,
     },
+    fontFamily: {
+      NotoSerifKRRegular: ["NotoSerifKR-Regular"],
+      NotoSerifKRBold: ["NotoSerifKR-Bold"],
+      NotoSerifKRLight: ["NotoSerifKR-Light"],
+      NotoSerifKRMedium: ["NotoSerifKR-Medium"],
+      NotoSerifKRSemiBold: ["NotoSerifKR-SemiBold"],
+      NotoSerifKRBlack: ["NotoSerifKR-Black"],
+      NotoSerifKRExtraLight: ["NotoSerifKR-ExtraLight"],
+    },
   },
   plugins: [],
 };

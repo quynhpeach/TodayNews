@@ -14,6 +14,13 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-TodayNews-TodayNewsTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-TodayNews-TodayNewsTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
+		A9A6EB1953714CFC8F9B94A1 /* NotoSerifKR-Black.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1BB173EB287B4A18971E064B /* NotoSerifKR-Black.otf */; };
+		746049ABCBB7417C988A5038 /* NotoSerifKR-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = A41A86C039984DC6B5E6C31C /* NotoSerifKR-Bold.otf */; };
+		5B74C07A49EF440A9BC8EC8F /* NotoSerifKR-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = F9E3B8AB3B2D4126AFC5D887 /* NotoSerifKR-ExtraLight.otf */; };
+		7C4034DE8628474B9C2ACF76 /* NotoSerifKR-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1C26B36F34D6435F9DCE5F0F /* NotoSerifKR-Light.otf */; };
+		8E86584EBC62453C8D27BAE8 /* NotoSerifKR-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 13D79666476A441581C23E5C /* NotoSerifKR-Medium.otf */; };
+		C7579AE540DD47DBA174C0F2 /* NotoSerifKR-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 110FD2279A5C4FB287602017 /* NotoSerifKR-Regular.otf */; };
+		0BBC1629A10A46C092B28A62 /* NotoSerifKR-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 4F1036A27BB64E248835CFBF /* NotoSerifKR-SemiBold.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = TodayNews/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-TodayNews-TodayNewsTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayNews-TodayNewsTests.release.xcconfig"; path = "Target Support Files/Pods-TodayNews-TodayNewsTests/Pods-TodayNews-TodayNewsTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		1BB173EB287B4A18971E064B /* NotoSerifKR-Black.otf */ = {isa = PBXFileReference; name = "NotoSerifKR-Black.otf"; path = "../src/assets/fonts/NotoSerifKR-Black.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		A41A86C039984DC6B5E6C31C /* NotoSerifKR-Bold.otf */ = {isa = PBXFileReference; name = "NotoSerifKR-Bold.otf"; path = "../src/assets/fonts/NotoSerifKR-Bold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		F9E3B8AB3B2D4126AFC5D887 /* NotoSerifKR-ExtraLight.otf */ = {isa = PBXFileReference; name = "NotoSerifKR-ExtraLight.otf"; path = "../src/assets/fonts/NotoSerifKR-ExtraLight.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		1C26B36F34D6435F9DCE5F0F /* NotoSerifKR-Light.otf */ = {isa = PBXFileReference; name = "NotoSerifKR-Light.otf"; path = "../src/assets/fonts/NotoSerifKR-Light.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		13D79666476A441581C23E5C /* NotoSerifKR-Medium.otf */ = {isa = PBXFileReference; name = "NotoSerifKR-Medium.otf"; path = "../src/assets/fonts/NotoSerifKR-Medium.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		110FD2279A5C4FB287602017 /* NotoSerifKR-Regular.otf */ = {isa = PBXFileReference; name = "NotoSerifKR-Regular.otf"; path = "../src/assets/fonts/NotoSerifKR-Regular.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
+		4F1036A27BB64E248835CFBF /* NotoSerifKR-SemiBold.otf */ = {isa = PBXFileReference; name = "NotoSerifKR-SemiBold.otf"; path = "../src/assets/fonts/NotoSerifKR-SemiBold.otf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -122,6 +136,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				BBD78D7AC51CEA395F1C20DB /* Pods */,
+				7EBEC8D8D1EF447A896FF133 /* Resources */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,6 +162,21 @@
 			);
 			path = Pods;
 			sourceTree = "<group>";
+		};
+		7EBEC8D8D1EF447A896FF133 /* Resources */ = {
+			isa = "PBXGroup";
+			children = (
+				1BB173EB287B4A18971E064B /* NotoSerifKR-Black.otf */,
+				A41A86C039984DC6B5E6C31C /* NotoSerifKR-Bold.otf */,
+				F9E3B8AB3B2D4126AFC5D887 /* NotoSerifKR-ExtraLight.otf */,
+				1C26B36F34D6435F9DCE5F0F /* NotoSerifKR-Light.otf */,
+				13D79666476A441581C23E5C /* NotoSerifKR-Medium.otf */,
+				110FD2279A5C4FB287602017 /* NotoSerifKR-Regular.otf */,
+				4F1036A27BB64E248835CFBF /* NotoSerifKR-SemiBold.otf */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+			path = "";
 		};
 /* End PBXGroup section */
 
@@ -243,6 +273,13 @@
 			files = (
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				A9A6EB1953714CFC8F9B94A1 /* NotoSerifKR-Black.otf in Resources */,
+				746049ABCBB7417C988A5038 /* NotoSerifKR-Bold.otf in Resources */,
+				5B74C07A49EF440A9BC8EC8F /* NotoSerifKR-ExtraLight.otf in Resources */,
+				7C4034DE8628474B9C2ACF76 /* NotoSerifKR-Light.otf in Resources */,
+				8E86584EBC62453C8D27BAE8 /* NotoSerifKR-Medium.otf in Resources */,
+				C7579AE540DD47DBA174C0F2 /* NotoSerifKR-Regular.otf in Resources */,
+				0BBC1629A10A46C092B28A62 /* NotoSerifKR-SemiBold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
