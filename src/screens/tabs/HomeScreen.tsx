@@ -1,5 +1,7 @@
 import { Articles, ResponseAPIResult } from 'src/services/apiModel';
 import {
+  Dimensions,
+  FlatList,
   Image,
   ScrollView,
   Text,
@@ -10,12 +12,33 @@ import {
 import React, { useCallback, useEffect, useState } from 'react';
 
 import Icon from 'src/components/Icon';
+import Modal from 'react-native-modal/dist/modal';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import NewsItem from './components/NewsItem';
+import Pagination from '@cherry-soft/react-native-basic-pagination';
+import { RootStackParams } from 'src/routes/RootStackParams';
+import appStore from 'src/services/appStore';
 import axios from 'axios';
+import colors from 'src/services/colors';
+import moment from 'moment';
+import { observer } from 'mobx-react-lite';
 
-const HomeScreen = () => {
+type props = NativeStackScreenProps<RootStackParams, 'HomeScreen'>;
+const HomeScreen = ({ navigation }: props) => {
   const [latestNews, setLatestNews] = useState<Articles[]>([]);
-  const [activeCategory, setActiveCategory] = useState(0);
-  const [text, setText ] = useState('');
+  const [activeCategory, setActiveCategory] = useState(-1);
+  const [page, setPage] = useState(1);
+  const [text, setText] = useState('');
+  const listSortBy = [
+    {
+      value: 1,
+      label: 'Popularity',
+    },
+    {
+      value: 2,
+      label: 'Relevancy',
+    },
+  ];
   const listCategories = [
     'Health',
     'Sports',
@@ -28,20 +51,66 @@ const HomeScreen = () => {
   ];
   useEffect(() => {
     getLatestNews();
-  }, []);
+  }, [page]);
+
+  function caesarCipher(text: string, shift: number): string {
+    let result = '';
+    for (let i = 0; i < text.length; i++) {
+      let char = text[i];
+      if (char.match(/[A-Z]/)) {
+        result += String.fromCharCode(
+          ((char.charCodeAt(0) - 65 - shift + 26) % 26) + 65,
+        );
+      } else if (char.match(/[a-z]/)) {
+        result += String.fromCharCode(
+          ((char.charCodeAt(0) - 97 - shift + 26) % 26) + 97,
+        );
+      } else {
+        result += char;
+      }
+    }
+
+    return result;
+  }
 
   const getLatestNews = async (keyword?: string) => {
     try {
-      if (!keyword) {
-        const response = await axios.get(
-          'https://newsapi.org/v2/everything?q=all&apiKey=4b482218317f4c84a6e9aa5b10835f2c&from=2024-03-23&to=2024-03-24&page=1&pageSize=10',
+      if (!keyword && page > 0) {
+        const response = await axios.get<ResponseAPIResult>(
+          `http://192.168.2.20/getListNews.php` + '?page=' + page,
         );
-        setLatestNews(response.data.articles);
+        const data = response.data;
+
+        setLatestNews(
+          data?.news.map((e: Articles) => {
+            let decrypted: Articles = {} as Articles;
+            Object.keys(e).forEach(key => {
+              // @ts-ignore
+              decrypted[key] = caesarCipher(e[key], 3);
+            });
+            return decrypted;
+          }),
+        );
       } else {
         const response = await axios.get(
-          `https://newsapi.org/v2/everything?q=${keyword}&apiKey=4b482218317f4c84a6e9aa5b10835f2c&from=2024-03-23&to=2024-03-24&page=1&pageSize=10`,
+          'http://192.168.2.20/getListNews.php?keyword=' +
+            keyword +
+            '&page=' +
+            page,
+          // `https://newsapi.org/v2/everything?q=${keyword}&apiKey=4b482218317f4c84a6e9aa5b10835f2c&${previousDate}&to=${date}&page=1&pageSize=10&sortBy=${sortBy}`,
         );
-        setLatestNews(response.data.articles);
+        console.log('log', response.data);
+        setLatestNews(
+          response.data?.news.map((e: Articles) => {
+            let decrypted: Articles = {} as Articles;
+            Object.keys(e).forEach(key => {
+              // @ts-ignore
+              decrypted[key] = caesarCipher(e[key], 3);
+            });
+            return decrypted;
+          }),
+        );
+
       }
     } catch (error) {
       console.error('Error fetching latest news:', error);
@@ -49,55 +118,21 @@ const HomeScreen = () => {
   };
 
   const handleTextChange = (newText: any) => {
-    // Update the state with the new text value
     setText(newText);
-};
+  };
 
   const RenderNews = useCallback(() => {
-    if (!latestNews) {
-      // If latestNews is undefined, display a loading indicator or a message
-      return <Text>Loading...</Text>;
-    }
-
-    // If latestNews is defined, proceed with rendering the news items
     return (
-      <>
-        {latestNews.map((item, index) => (
-          <View className="my-3" key={index}>
-            <TouchableOpacity className="rounded-lg overflow-hidden p-0 h-[230px]">
-              <Image
-                source={{
-                  uri: item.urlToImage,
-                }}
-                className="h-[230px] w-100%"
-              />
-              <View
-                className="absolute bottom-0 left-0 right-0 p-4"
-                style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)' }}>
-                <Text className="font-NotoSerifKRBold text-lg text-white">
-                  {item.title}
-                </Text>
-                <View className="flex-row justify-between items-center mt-2">
-                  <Icon
-                    type={'MaterialIcons'}
-                    name={'favorite-border'}
-                    color="#fff"
-                    size={20}
-                  />
-                  <Text className="font-NotoSerifKRLight text-xs text-white text-right ">
-                    By {item.author}, {item.publishedAt}
-                  </Text>
-                </View>
-              </View>
-            </TouchableOpacity>
-          </View>
-        ))}
-      </>
+      <FlatList
+        showsVerticalScrollIndicator={true}
+        data={latestNews}
+        renderItem={({ item, index }) => <NewsItem item={item} key={index} />}
+      />
     );
   }, [latestNews]);
 
   return (
-    <ScrollView>
+    <View>
       <View className="p-3">
         <View className="rounded-3xl border-gray-400 border-[0.6px] h-[40px] flex-row items-center">
           <Icon
@@ -108,37 +143,48 @@ const HomeScreen = () => {
             className="mb-2 ml-1"
           />
           <TextInput
-            className="font-NotoSerifKRRegular text-gray-400 text-sm py-0"
+            className="font-NotoSerifKRRegular text-gray-400 text-sm p-2 flex-1"
             value={text}
             onChangeText={handleTextChange}
+            onBlur={() => getLatestNews(text)}
           />
         </View>
+
         <Text className="font-NotoSerifKRBold my-3 text-black text-xl">
           Latest News
         </Text>
-        <ScrollView horizontal>
-          {listCategories.map((item, index) => {
-            return (
-              <View className="mx-2">
-                <TouchableOpacity
-                  onPress={() => {
-                    setActiveCategory(index), getLatestNews(item);
-                  }}
-                  className={`rounded-3xl ${activeCategory === index ? 'bg-[#FF3A44]' : 'bg-white border-gray-400 border-[0.5px]'} py-2 px-3`}>
-                  <Text
-                    className={`${activeCategory === index ? 'text-white' : 'text-black'}  font-NotoSerifKRRegular text-xs`}>
-                    {item}
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            );
-          })}
-        </ScrollView>
+
+        <FlatList
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          className="pb-2"
+          data={listCategories}
+          renderItem={({ item, index }) => (
+            <TouchableOpacity
+              onPress={() => {
+                setActiveCategory(index), getLatestNews(item);
+              }}
+              className={`h-[35px] justify-center items-center mx-2 mb-2 rounded-3xl ${activeCategory === index ? 'bg-[#FF3A44]' : 'bg-white border-gray-400 border-[0.5px]'}`}>
+              <Text
+                className={`${activeCategory === index ? 'text-white' : 'text-black'}  font-NotoSerifKRRegular text-xs px-3`}>
+                {item}
+              </Text>
+            </TouchableOpacity>
+          )}
+        />
+        <TouchableOpacity
+          onPress={() => setPage(page + 1)}
+          className="justify-center items-center">
+          <Text className="font-NotoSerifKRSemiBold text-primary">
+            Load more
+          </Text>
+        </TouchableOpacity>
         <RenderNews />
       </View>
-      <View className='h-[100px]'></View>
-    </ScrollView>
+
+      <View className="h-[100px]"></View>
+    </View> 
   );
 };
 
-export default HomeScreen;
+export default observer(HomeScreen);

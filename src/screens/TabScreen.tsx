@@ -5,10 +5,11 @@ import FavoriteNews from './tabs/FavoriteNews';
 import HomeScreen from './tabs/HomeScreen';
 import HotNews from './tabs/HotNews';
 import Icon from 'src/components/Icon';
+import { RootStackParams } from 'src/routes/RootStackParams';
 import SplashScreen from 'react-native-splash-screen';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
-const Tab = createBottomTabNavigator();
+const Tab = createBottomTabNavigator<RootStackParams>();
 const TabScreen = () => {
   useEffect(() => {
     (async () => {
@@ -65,7 +66,7 @@ const TabScreen = () => {
         name="FavoriteNews"
         component={FavoriteNews}
         options={{
-          tabBarLabel: 'Favorite news',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <View className="items-center justify-center">
               <Icon
@@ -89,7 +90,7 @@ const TabScreen = () => {
         name="HotNews"
         component={HotNews}
         options={{
-          tabBarLabel: 'Hot news',
+          headerShown: false,
           tabBarIcon: ({ color, focused }) => (
             <View className="items-center justify-center">
               <Icon
